@@ -1,0 +1,11 @@
+resRequest:
+  cpu: "0.4"
+  mem: "1024Mi"
+resLimit:
+  cpu: "1.5"
+  mem: "3Gi"
+
+service:
+  port: 25565
+  targetPort: 25565
+  nodePort: 30000
