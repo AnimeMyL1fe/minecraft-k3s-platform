@@ -1,0 +1,13 @@
+name: helm-ci
+on:
+  push:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run helm lint
+        run: helm lint charts/minecraft
