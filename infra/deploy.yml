@@ -1,0 +1,6 @@
+---
+- name: deploy HomeLab infrastructure
+  hosts: all
+  roles:
+    - bootstrap
+    - netbird

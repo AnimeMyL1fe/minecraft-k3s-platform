@@ -1,1 +1,10 @@
 *.tgz
+
+# --- ansible ---
+**/vault.yml
+*.vault_password
+*.passwd
+*.key
+ansible/facts.d/
+.ansible_cache/
+ansible/inventory/hosts.yaml

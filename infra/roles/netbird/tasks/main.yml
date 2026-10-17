@@ -1,0 +1,36 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for lab_netbird
+
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /usr/share/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Add key
+  get_url:
+    url: "https://pkgs.netbird.io/debian/public.key"
+    dest: "/usr/share/keyrings/netbird-archive-keyring.asc"
+
+
+- name: Add repo
+  apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/netbird-archive-keyring.asc] https://pkgs.netbird.io/debian stable main'
+    state: present
+
+- name: Install netbird
+  apt:
+    name: netbird
+    state: present
+    update_cache: yes
+
+- name: Start netbird
+  service:
+    name: netbird
+    enabled: yes
+    state: started
+
+- name: Access token 
+  shell: |
+    netbird up --setup-key "{{ netbird_token }}"

@@ -1,0 +1,11 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for bootstrap
+- name: Install packages
+  apt:
+    name:
+      - ca-certificates
+      - curl 
+      - gnupg
+    state: present
+    update_cache: yes

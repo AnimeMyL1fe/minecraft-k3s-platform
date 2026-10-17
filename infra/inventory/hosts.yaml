@@ -1,0 +1,22 @@
+all:
+  children:
+    # --- LINUX SERVERS ---
+    linux_servers: 
+      hosts:
+        k3s-main:
+          ansible_host: 192.168.0.230
+      vars:
+        ansible_user: "{{ k3s_user }}"
+        ansible_ssh_private_key_file: ~/.ssh/proxmox_key
+
+    vps_servers:
+      hosts:
+        vps_msk:
+          ansible_host: 194.55.237.161
+      vars:
+        ansible_user:  "{{ vps_user }}"
+        ansible_ssh_private_key_file: ~/.ssh/ru_vps_key
+
+
+  vars:
+    ansible_become: true
