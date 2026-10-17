@@ -19,12 +19,18 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: {{ .Release.Name }}
-        image: itzg/minecraft-server
+        image: itzg/minecraft-server:java21
         env:
         - name: EULA
           value: "TRUE"
         - name: ONLINE_MODE
           value: "FALSE"
+        - name: TYPE
+          value: "PAPER"
+        - name: VERSION
+          value: "1.20.4"
+        - name: MAX_TICK_TIME
+          value: "-1"
         ports:
         - containerPort: 25565
           name: default-port
@@ -33,7 +39,6 @@ spec:
             cpu: {{ .Values.resRequest.cpu }}
             memory: {{ .Values.resRequest.mem }}
           limits:
-            cpu: {{ .Values.resLimit.cpu }}
             memory: {{ .Values.resLimit.mem }}
         volumeMounts:
         - name: data

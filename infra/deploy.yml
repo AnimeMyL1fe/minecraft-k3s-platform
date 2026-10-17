@@ -1,6 +1,16 @@
 ---
-- name: deploy HomeLab infrastructure
-  hosts: all
+- name: Deploy HomeLab infrastructure
+  hosts: vps_msk
+  roles: 
+    - bootstrap
+    - netbird
+
+- name: Deploy Nginx Homelab
+  hosts: homelab-k3s-ng
   roles:
     - bootstrap
     - netbird
+    - dmz_nginx
+
+
+ 

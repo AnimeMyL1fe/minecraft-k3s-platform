@@ -1,8 +1,7 @@
 resRequest:
-  cpu: "0.4"
-  mem: "1024Mi"
+  cpu: "0.2"
+  mem: "1536Mi"
 resLimit:
-  cpu: "1.5"
   mem: "3Gi"
 
 service:
