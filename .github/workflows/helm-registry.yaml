@@ -21,11 +21,9 @@ jobs:
           HARBOR_PASS: ${{ secrets.HARBOR_PASS }}
         run: |
           echo "$HARBOR_PASS" | helm registry login 192.168.0.211 -u $HARBOR_USER --password-stdin
-
-      - name: Package Charts
-        run:
-          helm package charts/minecraft
       
-      - name: Push Charts to the Repository 
-        run:
-          helm push minecraft-$(grep "version:" charts/minecraft/Chart.yaml | awk '{print $2}').tgz  oci://192.168.0.211/helm-homelab
+      - name: Package and push Charts to the Repository 
+        run: |
+          CHART_TAG=$(helm package charts/minecraft -d /tmp | awk '{print $NF}')
+          helm push $CHART_TAG oci://192.168.0.211/helm-homelab
+          rm -rf CHART_TAG
