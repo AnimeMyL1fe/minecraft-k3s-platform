@@ -43,6 +43,8 @@
 │       └── dmz_nginx/        # Развертывание Stream Proxy с proxy_bind
 └── README.md
 
+```
+
 🚀 CI/CD Пайплайн
 
 В проекте используется GitHub Actions на базе self-hosted раннера с доверенным корневым сертификатом (Homelab Root CA).
