@@ -3,7 +3,6 @@ name: Private registry charts
 on:
   push:
     branches:
-      - dev
       - main
 
 jobs:
